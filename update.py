@@ -4,29 +4,26 @@ from celery import Celery
 import requests
 import json
 
-from shared import redis_client
-from logger import logger
+from red_alerts.shared import redis_client
+from red_alerts.logger import logger
 import os
-
 
 load_dotenv()
 
 API_URL = os.environ.get("API_URL")
 UPDATE_INTERVAL = int(os.environ.get("UPDATE_INTERVAL", 10))
 
+
 CELERYBEAT_SCHEDULE = {
     'update_data_task': {
-        'task': 'tasks.update_data',
+        'task': 'update.update_data',
         'schedule': timedelta(seconds=UPDATE_INTERVAL),
     },
 }
 
-celery = Celery('tasks', broker='redis://redis:6379/0')
+celery = Celery('update', broker='redis://redis:6379/0')
 celery.conf.beat_schedule = CELERYBEAT_SCHEDULE
-# Disable logger
 celery.conf.worker_hijack_root_logger = False
-
-
 celery.conf.timezone = 'UTC'
 
 

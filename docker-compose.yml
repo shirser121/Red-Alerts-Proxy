@@ -3,6 +3,7 @@ version: '3'
 services:
   web:
     build: .
+    command: [ "gunicorn", "wsgi:app", "--bind", "0.0.0.0:3007", "--workers", "3" ]
     ports:
       - "3007:3007"
     environment:
@@ -16,7 +17,7 @@ services:
 
   worker:
     build: .
-    command: celery -A tasks worker --loglevel=info --concurrency=1
+    command: celery -A update worker --loglevel=info --concurrency=1
     depends_on:
       - redis
     volumes:
@@ -26,7 +27,7 @@ services:
 
   beat:
     build: .
-    command: celery -A tasks beat --loglevel=info
+    command: celery -A update beat --loglevel=info
     depends_on:
       - redis
     restart: always

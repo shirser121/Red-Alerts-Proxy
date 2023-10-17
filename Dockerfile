@@ -10,4 +10,4 @@ EXPOSE 3007
 
 COPY . .
 
-CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:3007", "--workers", "3"]
+CMD ["gunicorn", "wsgi:app", "--bind", "0.0.0.0:3007", "--workers", "3"]
