@@ -1,23 +1,44 @@
 from flask import Flask, jsonify, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import json
 
-import requests
-import threading
-import time
-import os
 import logging
+from logging.handlers import RotatingFileHandler
+
+from dotenv import load_dotenv
+import threading
+import requests
+import time
+import json
+import os
 
 app = Flask(__name__)
 limiter = Limiter(key_func=get_remote_address)
 limiter.init_app(app)
 
-API_URL = os.environ.get("API_URL", 'https://api.tzevaadom.co.il/alerts-history/')
-UPDATE_INTERVAL = int(os.environ.get("UPDATE_INTERVAL", 2))
+load_dotenv()
+
+API_URL = os.environ.get("API_URL")
+UPDATE_INTERVAL = int(os.environ.get("UPDATE_INTERVAL"))
+
 jsonData = []
 
-logging.basicConfig(level=logging.INFO)
+if not os.path.exists('logs'):
+    os.makedirs('logs')
+
+# Set up logging
+log_format = "[%(asctime)s] [%(levelname)s] - %(message)s"
+logging.basicConfig(level=logging.INFO, format=log_format)
+
+# Add rotating file handler
+file_handler = RotatingFileHandler("logs/app.log", maxBytes=1000000, backupCount=5)
+file_handler.setFormatter(logging.Formatter(log_format))
+logging.getLogger().addHandler(file_handler)
+
+# Add stream handler (optional if you want logs to also print to console)
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(logging.Formatter(log_format))
+logging.getLogger().addHandler(stream_handler)
 
 
 def update_data():
@@ -28,6 +49,7 @@ def update_data():
             response.raise_for_status()  # raises exception when not a 2xx response
             content = response.content.decode('utf-8')
             jsonData = json.loads(content)
+            logging.info("Data successfully fetched and updated.")
         except Exception as e:
             logging.error(f'Error fetching data: {e}')
         time.sleep(UPDATE_INTERVAL)
