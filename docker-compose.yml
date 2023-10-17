@@ -12,7 +12,7 @@ services:
       - redis
     volumes:
       - ./logs:/app/logs
-
+    restart: always
 
   worker:
     build: .
@@ -21,7 +21,7 @@ services:
       - redis
     volumes:
       - ./logs:/app/logs
-
+    restart: always
 
 
   beat:
@@ -29,8 +29,10 @@ services:
     command: celery -A tasks beat --loglevel=info
     depends_on:
       - redis
+    restart: always
 
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+    restart: always
