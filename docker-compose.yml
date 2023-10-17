@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3007:3007"
+    environment:
+      - FLASK_APP=main.py
+      - FLASK_RUN_HOST=0.0.0.0
+    depends_on:
+      - redis
+    volumes:
+      - ./logs:/app/logs
+
+
+  worker:
+    build: .
+    command: celery -A tasks worker --loglevel=info --concurrency=1
+    depends_on:
+      - redis
+    volumes:
+      - ./logs:/app/logs
+
+
+
+  beat:
+    build: .
+    command: celery -A tasks beat --loglevel=info
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
