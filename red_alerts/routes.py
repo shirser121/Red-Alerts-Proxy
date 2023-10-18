@@ -7,7 +7,7 @@ from red_alerts.shared import redis_client
 def init_routes(app):
     @app.route('/')
     def home():
-        city = request.args.get('city')
+        cities = request.args.get('cities')
         since_id = request.args.get('since_id', type=int)
         since_date = request.args.get('since_date', type=int)
 
@@ -17,14 +17,15 @@ def init_routes(app):
             # You can log the error if needed
             return jsonify({"error": "Failed to fetch data from Redis", "details": str(e)}), 500
 
-        if city:
+        if cities:
+            cities = cities.split(',')
             filtered_results = []
 
             for record in results:
                 matching_alerts = []
                 for alert in record['alerts']:
                     for city_sub in alert['cities']:
-                        if city in city_sub:
+                        if any(city in city_sub for city in cities):
                             matching_alerts.append(alert)
                             break
                 if matching_alerts:
