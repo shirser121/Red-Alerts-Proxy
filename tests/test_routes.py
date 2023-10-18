@@ -80,14 +80,13 @@ def test_redis_fetch_error(client, monkeypatch):
 
 def test_invalid_since_id_format(client):
     response = client.get('/?since_id=abcd')
-    assert response.status_code == 200  # Assuming you handle this as a bad request
+    assert response.status_code == 200
 
 
 def test_empty_city_string(client):
     response = client.get('/?city=')
     assert response.status_code == 200
     data = json.loads(response.data.decode('utf-8'))
-    # Depending on your logic, check if the response is as expected.
 
 
 def test_no_data_in_redis(monkeypatch, client):
@@ -99,4 +98,4 @@ def test_no_data_in_redis(monkeypatch, client):
     response = client.get('/')
     assert response.status_code == 200
     data = json.loads(response.data.decode('utf-8'))
-    assert len(data) == 0  # Expecting empty data
+    assert len(data) == 0
