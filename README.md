@@ -61,7 +61,7 @@ Simply navigate to `http://localhost:3007` and utilize the provided API endpoint
 ## 🚀 Endpoints
 
 - **Root (`/`)**: Retrieves all alerts. Supports filtering.
-  - `city`: Filter by city name.
+  - `cities`: Filter by city name, accept multiple cities separated by comma (,).
   - `since_date`: Get alerts post after specific date, in timestamp.
   - `since_id`: Get alerts post a specific ID.
   - ...
