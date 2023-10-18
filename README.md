@@ -72,4 +72,4 @@ Contributions are welcomed! Please read the [contributing guidelines](./CONTRIBU
 
 ## 📜 License
 
-This project is under the [MIT License](./LICENSE).
+This project is under the [MIT License](./LICENSE.md).
