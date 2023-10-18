@@ -14,17 +14,16 @@ A streamlined proxy service for fetching and caching red alerts, powered by Flas
   
 ## 📖 Table of Contents
 
-- [Getting Started](#getting-started)
+- [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Configuration](#configuration)
-- [Usage](#usage)
-- [Endpoints](#endpoints)
-- [Contributing](#contributing)
-- [License](#license)
-- [Credits](#credits)
+- [Usage](#-usage)
+- [Endpoints](#-endpoints)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-## 🏁 Getting Started
+## 🏁Getting Started
 
 ### Prerequisites
 
@@ -74,9 +73,3 @@ Contributions are welcomed! Please read the [contributing guidelines](./CONTRIBU
 ## 📜 License
 
 This project is under the [MIT License](./LICENSE).
-
-## 👏 Credits
-
-- **OpenAI**: For the exceptional guidance and support.
-- ...
-
