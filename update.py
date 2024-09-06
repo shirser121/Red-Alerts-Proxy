@@ -29,7 +29,6 @@ celery.conf.timezone = 'UTC'
 
 @celery.task(bind=True)
 def update_data(self):
-    global jsonData
     try:
         response = requests.get(API_URL)
         response.raise_for_status()  # raises exception when not a 2xx response

@@ -1,0 +1,286 @@
+[
+    {
+        "id": 1697997,
+        "alerts": [
+            {
+                "cities": [
+                    "נתיבות"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 23209,
+                "time": 1697997600,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            }
+        ]
+    }
+][
+    {
+        "id": 1698061,
+        "alerts": [
+            {
+                "cities": [
+                    "עין הבשור"
+                ],
+                "threat": 5,
+                "isDrill": false,
+                "matrix_id": 6,
+                "rid": 23236,
+                "time": 1698061629,
+                "description": "חדירת כלי טיס עוין = חדירת כלי טיס עוין"
+            },
+            {
+                "cities": [
+                    "ניר עוז"
+                ],
+                "threat": 5,
+                "isDrill": false,
+                "matrix_id": 6,
+                "rid": 23235,
+                "time": 1698061223,
+                "description": "חדירת כלי טיס עוין = חדירת כלי טיס עוין"
+            }
+        ]
+    }
+][
+    {
+        "id": 1698175,
+        "alerts": [
+            {
+                "cities": [
+                    "נתיב העשרה"
+                ],
+                "threat": 2,
+                "isDrill": false,
+                "matrix_id": 13,
+                "rid": 23432,
+                "time": 1698175595,
+                "description": "חשש לחדירת מחבלים = חדירת מחבלים"
+            }
+        ]
+    }
+][
+    {
+        "id": 1697188,
+        "alerts": [
+            {
+                "cities": [
+                    "מבקיעים"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21934,
+                "time": 1697188732,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "כפר סילבר",
+                    "באר גנים"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21929,
+                "time": 1697188724,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "משען",
+                    "הודיה",
+                    "ברכיה"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21931,
+                "time": 1697188723,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "ניר ישראל"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21928,
+                "time": 1697188721,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "זיקים"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21927,
+                "time": 1697188712,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "אזור תעשייה צפוני אשקלון"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21923,
+                "time": 1697188706,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "אשקלון - צפון"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21924,
+                "time": 1697188704,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "אזור תעשייה הדרומי אשקלון",
+                    "אשקלון - דרום"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21925,
+                "time": 1697188703,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "פארק תעשייה ראם",
+                    "עשרת",
+                    "נווה מבטח",
+                    "משגב דב",
+                    "מישר",
+                    "כנות",
+                    "חצב",
+                    "גן יבנה",
+                    "בני עי''ש",
+                    "ביצרון",
+                    "אזור תעשייה כנות",
+                    "גדרה"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21911,
+                "time": 1697188525,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "קדרון"
+                ],
+                "threat": 8,
+                "isDrill": false,
+                "matrix_id": 2,
+                "rid": 21910,
+                "time": 1697188511,
+                "description": "התראה = אזהרה"
+            },
+            {
+                "cities": [
+                    "נירים"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21909,
+                "time": 1697188494,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "בית אלעזרי"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21904,
+                "time": 1697188488,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            },
+            {
+                "cities": [
+                    "קריית עקרון",
+                    "סתריה",
+                    "כפר ביל''ו",
+                    "גני יוחנן"
+                ],
+                "threat": 0,
+                "isDrill": false,
+                "matrix_id": 1,
+                "rid": 21905,
+                "time": 1697188485,
+                "description": "צבע אדום = ירי רקטות וטילים"
+            }
+        ]
+    }
+][
+    {
+        "id": 1686207,
+        "alerts": [
+            {
+                "cities": [
+                    "ביתר עילית"
+                ],
+                "threat": 3,
+                "isDrill": true,
+                "matrix_id": 103,
+                "rid": 16239,
+                "time": 1686207900,
+                "description": "תרגיל רעידת אדמה = תרגיל רעידת אדמה"
+            }
+        ]
+    }
+][
+    {
+        "id": 1686031,
+        "alerts": [
+            {
+                "cities": [
+                    "שלומי",
+                    "ראש הנקרה",
+                    "לימן",
+                    "בצת",
+                    "אזור תעשייה אכזיב מילואות",
+                    "גשר הזיו"
+                ],
+                "threat": 1,
+                "isDrill": true,
+                "matrix_id": 107,
+                "rid": 16232,
+                "time": 1686031500,
+                "description": "תרגיל אירוע חומרים מסוכנים = תרגיל חומרים מסוכנים"
+            }
+        ]
+    }
+][
+    {
+        "id": 1686117,
+        "alerts": [
+            {
+                "cities": [
+                    "נשר"
+                ],
+                "threat": 0,
+                "isDrill": true,
+                "matrix_id": 101,
+                "rid": 16238,
+                "time": 1686117899,
+                "description": "תרגיל צבע אדום = תרגיל ירי רקטות וטילים"
+            }
+        ]
+    }
+]

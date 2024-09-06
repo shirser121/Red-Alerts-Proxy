@@ -1,0 +1,135 @@
+{
+  "1" :{
+    "category":"missilealert",
+    "en": "Red Alert",
+    "he": "צבע אדום",
+    "id": 0,
+    "isDrill": false
+  },
+  "2": {
+    "category": "nonconventional",
+    "en": "Update",
+    "he": "התראה",
+    "id": 8,
+    "isDrill": false
+  },
+  "3": {
+    "category": "earthquakealert1",
+    "en": "Earthquake",
+    "he": "רעידת אדמה",
+    "id": 3,
+    "isDrill": false
+  },
+  "4": {
+    "category": "cbrne",
+    "en": "CBRNE",
+    "he": "חשש לאירוע רדיולוגי",
+    "id": 6,
+    "isDrill": false
+  },
+  "5": {
+    "category": "tsunami",
+    "en": "Tsunami",
+    "he": "חשש לצונאמי",
+    "id": 4,
+    "isDrill": false
+  },
+  "6": {
+    "category": "uav",
+    "en": "UAV",
+    "he": "חדירת כלי טיס עוין",
+    "id": 5,
+    "isDrill": false
+  },
+  "7": {
+    "category": "hazmat",
+    "en": "Hazmat",
+    "he": "אירוע חומרים מסוכנים",
+    "id": 1,
+    "isDrill": false
+  },
+  "10": {
+    "category": "nonconventional",
+    "en": "Update",
+    "he": "התראה",
+    "id": 8,
+    "isDrill": false
+  },
+  "13": {
+    "category": "terrorattack",
+    "en": "Update",
+    "he": "חשש לחדירת מחבלים",
+    "id": 2,
+    "isDrill": false
+  },
+  "101": {
+    "category":"missilealertdrill",
+    "en": "Red Alert Drill",
+    "he": "תרגיל צבע אדום",
+    "id": 0,
+    "isDrill": true
+  },
+  "102": {
+    "category": "nonconventionaldrill",
+    "en": "Alert Drill",
+    "he": "תרגיל התראה",
+    "id": 8,
+    "isDrill": true
+  },
+  "103": {
+    "category": "earthquakealert1drill",
+    "en": "Earthquake Drill",
+    "he": "תרגיל רעידת אדמה",
+    "id": 3,
+    "isDrill": true
+  },
+  "104": {
+    "category": "cbrnedrill",
+    "en": "CBRNE Drill",
+    "he": "תרגיל חשש לאירוע רדיולוגי",
+    "id": 6,
+    "isDrill": true
+  },
+  "105": {
+    "category": "tsunamidrill",
+    "en": "Tsunami Drill",
+    "he": "תרגיל חשש לצונאמי",
+    "id": 4,
+    "isDrill": true
+  },
+  "106": {
+    "category": "uavdrill",
+    "en": "UAV Drill",
+    "he": "תרגיל חדירת כלי טיס עוין",
+    "id": 5,
+    "isDrill": true
+  },
+  "107": {
+    "category": "hazmatdrill",
+    "en": "Hazmat Drill",
+    "he": "תרגיל אירוע חומרים מסוכנים",
+    "id": 1,
+    "isDrill": true
+  },
+  "110": {
+    "category": "nonconventionaldrill",
+    "en": "Alert Drill",
+    "he": "תרגיל התראה",
+    "id": 8,
+    "isDrill": true
+  },
+  "111": {
+    "category": "nonconventionaldrill",
+    "en": "Alert Drill",
+    "he": "תרגיל התראה",
+    "id": 8,
+    "isDrill": true
+  },
+  "113": {
+    "category": "terrorattackdrill",
+    "en": "Terror Attack Drill",
+    "he": "תרגיל חשש לחדירת מחבלים",
+    "id": 2,
+    "isDrill": true
+  }
+}
