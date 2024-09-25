@@ -14,24 +14,42 @@ services:
     volumes:
       - ./logs:/app/logs
     restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3007/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   worker:
     build: .
-    command: celery -A update worker --loglevel=info --concurrency=1
+    command: celery -A update worker --loglevel=DEBUG --concurrency=2
     depends_on:
       - redis
     volumes:
       - ./logs:/app/logs
     restart: always
 
-
   beat:
     build: .
-    command: celery -A update beat --loglevel=info
+    command: celery -A update beat --loglevel=DEBUG
     depends_on:
       - redis
     restart: always
 
   redis:
     image: "redis:alpine"
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  flower:
+    build: .
+    command: celery -A update flower --port=5555
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
     restart: always

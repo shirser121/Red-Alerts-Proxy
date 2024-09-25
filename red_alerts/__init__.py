@@ -1,14 +1,10 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 
 from dotenv import load_dotenv
 
 import os
-import json
 
-from red_alerts.logger import logger
-from red_alerts.shared import redis_client
 from red_alerts.routes import init_routes
 
 load_dotenv()
