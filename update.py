@@ -35,8 +35,13 @@ def update_data(self):
         response.raise_for_status()  # raises exception when not a 2xx response
         content = response.content.decode('utf-8')
         jsonData = json.loads(content)
-        redis_client.set('alerts_data', json.dumps(jsonData))
-        logger.info("Data successfully fetched and updated.")
+        new_data = json.dumps(jsonData)
+        previous_data = redis_client.get('alerts_data')
+        redis_client.set('alerts_data', new_data)
+        if previous_data is None or previous_data.decode('utf-8') != new_data:
+            logger.info("Data successfully fetched and updated.")
+        else:
+            logger.debug("Data fetched successfully (no changes).")
 
     except Exception as e:
         logger.error(f'Error fetching data: {e}')
