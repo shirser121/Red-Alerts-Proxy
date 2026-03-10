@@ -1,4 +1,5 @@
 import json
+import time
 import pytest
 from red_alerts import app as flask_app
 from red_alerts.shared import redis_client
@@ -29,6 +30,8 @@ SAMPLE_DATA = [
 @pytest.fixture(autouse=True)
 def mock_redis_get(monkeypatch):
     def mock_get(key):
+        if key == 'alerts_last_updated':
+            return str(time.time())
         return json.dumps(SAMPLE_DATA)
 
     monkeypatch.setattr(redis_client, 'get', mock_get)
@@ -91,6 +94,8 @@ def test_empty_city_string(client):
 
 def test_no_data_in_redis(monkeypatch, client):
     def mock_get_none(key):
+        if key == 'alerts_last_updated':
+            return None
         return None
 
     monkeypatch.setattr(redis_client, 'get', mock_get_none)

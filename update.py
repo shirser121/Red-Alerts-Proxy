@@ -3,6 +3,7 @@ from datetime import timedelta
 from celery import Celery
 import requests
 import json
+import time
 
 from red_alerts.shared import redis_client
 from red_alerts.logger import logger
@@ -38,6 +39,7 @@ def update_data(self):
         new_data = json.dumps(jsonData)
         previous_data = redis_client.get('alerts_data')
         redis_client.set('alerts_data', new_data)
+        redis_client.set('alerts_last_updated', str(time.time()))
         if previous_data is None or previous_data.decode('utf-8') != new_data:
             logger.info("Data successfully fetched and updated.")
         else:

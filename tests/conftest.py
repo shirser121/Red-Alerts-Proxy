@@ -33,9 +33,14 @@ def mock_redis(monkeypatch):
 def mock_get(monkeypatch):
     """
     Auto-used fixture to mock Redis get interactions.
-    Returns an empty list in JSON format.
+    Returns an empty list in JSON format for alerts_data,
+    and current timestamp for alerts_last_updated.
     """
-    def mock_get(*args, **kwargs):
+    import time
+
+    def mock_get(key, *args, **kwargs):
+        if key == 'alerts_last_updated':
+            return str(time.time())
         return '[]'
 
     monkeypatch.setattr(redis_client, 'get', mock_get)
