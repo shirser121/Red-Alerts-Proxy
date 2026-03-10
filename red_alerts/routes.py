@@ -1,11 +1,7 @@
 import json
-import time
 from flask import request, jsonify
 
 from red_alerts.shared import redis_client
-from red_alerts.logger import logger
-
-STALE_THRESHOLD = 60  # seconds
 
 
 def init_routes(app):
@@ -19,14 +15,6 @@ def init_routes(app):
             results = json.loads(redis_client.get('alerts_data') or '[]')
         except Exception as e:
             return jsonify({"error": "Failed to fetch data from Redis", "details": str(e)}), 500
-
-        last_updated = redis_client.get('alerts_last_updated')
-        if last_updated is None:
-            logger.warning("No data has been fetched yet by the worker.")
-        else:
-            age = time.time() - float(last_updated)
-            if age > STALE_THRESHOLD:
-                logger.warning(f"Data is stale: last updated {age:.0f}s ago.")
 
         if cities:
             cities = cities.split(',')
