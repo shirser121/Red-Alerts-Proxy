@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 from datetime import timedelta
 from celery import Celery
 import requests
-import json
 
 from red_alerts.shared import redis_client
 from red_alerts.logger import logger
@@ -12,6 +11,7 @@ load_dotenv()
 
 API_URL = os.environ.get("API_URL")
 UPDATE_INTERVAL = int(os.environ.get("UPDATE_INTERVAL", 10))
+REQUEST_TIMEOUT = int(os.environ.get("REQUEST_TIMEOUT", 10))
 
 
 CELERYBEAT_SCHEDULE = {
@@ -27,16 +27,12 @@ celery.conf.worker_hijack_root_logger = False
 celery.conf.timezone = 'UTC'
 
 
-@celery.task(bind=True)
+@celery.task(bind=True, autoretry_for=(Exception,), retry_backoff=2, retry_kwargs={'max_retries': 3})
 def update_data(self):
-    global jsonData
-    try:
-        response = requests.get(API_URL)
-        response.raise_for_status()  # raises exception when not a 2xx response
-        content = response.content.decode('utf-8')
-        jsonData = json.loads(content)
-        redis_client.set('alerts_data', json.dumps(jsonData))
+    response = requests.get(API_URL, timeout=REQUEST_TIMEOUT)
+    response.raise_for_status()
+    new_data = response.content
+    previous_data = redis_client.get('alerts_data')
+    redis_client.set('alerts_data', new_data)
+    if previous_data != new_data:
         logger.info("Data successfully fetched and updated.")
-
-    except Exception as e:
-        logger.error(f'Error fetching data: {e}')

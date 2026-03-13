@@ -14,7 +14,6 @@ def init_routes(app):
         try:
             results = json.loads(redis_client.get('alerts_data') or '[]')
         except Exception as e:
-            # You can log the error if needed
             return jsonify({"error": "Failed to fetch data from Redis", "details": str(e)}), 500
 
         if cities:
