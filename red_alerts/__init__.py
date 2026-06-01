@@ -8,7 +8,7 @@ import os
 import json
 
 from red_alerts.logger import logger
-from red_alerts.shared import redis_client
+from red_alerts.shared import RATELIMIT_REDIS_URL
 from red_alerts.routes import init_routes
 
 load_dotenv()
@@ -19,7 +19,7 @@ if not API_URL:
 app = Flask(__name__)
 limiter = Limiter(
     app,
-    storage_uri="redis://redis:6379/1"
+    storage_uri=RATELIMIT_REDIS_URL
 )
 limiter.init_app(app)
 

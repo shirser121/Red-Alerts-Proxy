@@ -50,9 +50,19 @@ A streamlined proxy service for fetching and caching red alerts, powered by Flas
 
 ### Configuration
 
-- Set essential environment variables:
-  - `API_URL`: URL for fetching alerts.
-  - `UPDATE_INTERVAL`: Desired data refresh rate in seconds.
+Configure the service with environment variables (see [`.env.example`](./.env.example)):
+
+- `API_URL` *(required)*: URL for fetching alerts.
+- `UPDATE_INTERVAL`: Data refresh rate in seconds (default `10`).
+- `REQUEST_TIMEOUT`: Timeout in seconds for each upstream fetch (default `10`).
+- `REDIS_URL`: How to reach Redis for the cached data and the Celery broker
+  (default `redis://redis:6379/0`). Override it to point at a different
+  host/port, a password-protected or TLS (`rediss://`) server, or a managed
+  Redis instance.
+- `RATELIMIT_REDIS_URL`: Storage for the rate limiter (default: db `1` of
+  `REDIS_URL`). Set this for managed Redis that exposes only a single database.
+- `REDIS_MAXMEMORY`: Memory cap for the bundled Redis container (default
+  `256mb`).
 
 ## 🔍 Usage
 

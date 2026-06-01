@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   web:
     build: .
@@ -10,7 +8,8 @@ services:
       - FLASK_APP=main.py
       - FLASK_RUN_HOST=0.0.0.0
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
     volumes:
       - ./logs:/app/logs
     restart: always
@@ -19,7 +18,8 @@ services:
     build: .
     command: celery -A update worker --loglevel=info --concurrency=1
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
     volumes:
       - ./logs:/app/logs
     restart: always
@@ -29,11 +29,34 @@ services:
     build: .
     command: celery -A update beat --loglevel=info
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
     restart: always
 
   redis:
     image: "redis:alpine"
+    # Run Redis as a bounded in-memory cache/broker. Capping memory and evicting
+    # the least-recently-used keys keeps it from growing until the OOM killer
+    # bounces the container -- a restart that surfaces in the app as
+    # "Temporary failure in name resolution" while the `redis` name is briefly
+    # unresolvable. Persistence is off because the cached alerts and the Celery
+    # queue are transient and rebuilt within one update interval.
+    command:
+      - "redis-server"
+      - "--maxmemory"
+      - "${REDIS_MAXMEMORY:-256mb}"
+      - "--maxmemory-policy"
+      - "allkeys-lru"
+      - "--save"
+      - ""
+      - "--appendonly"
+      - "no"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
     ports:
       - "6379:6379"
     restart: always

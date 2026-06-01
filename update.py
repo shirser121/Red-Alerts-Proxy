@@ -3,7 +3,7 @@ from datetime import timedelta
 from celery import Celery
 import requests
 
-from red_alerts.shared import redis_client
+from red_alerts.shared import redis_client, REDIS_URL
 from red_alerts.logger import logger
 import os
 
@@ -21,7 +21,7 @@ CELERYBEAT_SCHEDULE = {
     },
 }
 
-celery = Celery('update', broker='redis://redis:6379/0')
+celery = Celery('update', broker=REDIS_URL)
 celery.conf.beat_schedule = CELERYBEAT_SCHEDULE
 celery.conf.worker_hijack_root_logger = False
 celery.conf.timezone = 'UTC'
